@@ -20,10 +20,11 @@ CREATE TABLE IF NOT EXISTS Products (
 """)
 
 cursor.execute("""
-CREATE TABLE IF NOT EXISTS User (
+CREATE TABLE IF NOT EXISTS Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     user_name VARCHAR(255) NOT NULL,
-    user_password VARCHAR(225) NOT NULL
+    user_password VARCHAR(225) NOT NULL,
+    user_email VARCHAR(255) NOT NULL
 )
 """)
 

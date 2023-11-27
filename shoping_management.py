@@ -1,6 +1,7 @@
 import mysql.connector
 from getpass import getpass
 import datetime
+import pandas as pd
 
 # create a MySQL connection
 db = mysql.connector.connect(
@@ -22,7 +23,13 @@ def create_account():
         print('account created')
     else:
         print('passwords do not match')
-
+def browse_products():
+    cursor.execute('SELECT * FROM Products')
+    products=cursor.fetchall()
+    print('\n\t\tAvailable products:')
+    df=pd.DataFrame(products,columns=['product_id','product_name','product_price'])   
+    print(df.to_string(index=False))
+    
 def main():
     while True:
         print('\nMenu:')
@@ -35,6 +42,8 @@ def main():
         choice = input('Enter your choice: ')
         if choice == '1':
             create_account()
+        elif choice == '2':
+            browse_products()
         elif choice == '6':
             print('Goodbye!')
             break
